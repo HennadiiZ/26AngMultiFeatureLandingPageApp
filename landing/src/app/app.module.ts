@@ -40,4 +40,6 @@ export class AppModule { }
   // GeolocationPositionError {code: 1, message: 'User denied Geolocation'}
   // GeolocationPositionError {code: 1, message: 'User has not allowed access to system location.'}
 // 449. The Angular Way
-// 
+
+// 450. Geolocation in an Observable
+// 451. Connecting the Service to a Component
