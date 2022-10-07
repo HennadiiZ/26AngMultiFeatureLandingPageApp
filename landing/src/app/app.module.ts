@@ -25,4 +25,19 @@ export class AppModule { }
 // 444. Generating Modules
 // 445. Module Properties
 // 446. Connecting Modules
-//
+
+// 447. Examining the API
+  // - https://home.openweathermap.org/api_keys
+  // e07899b8ac29022c34d61a58f51cd3db (api_keys)
+// 448. Reading the Users Location
+
+  // navigator.geolocation.getCurrentPosition(
+  //   (position) => console.log(position),
+  //   (err) => console.log(err)
+  // )
+
+  // Position {coords: Coordinates, timestamp: 1577380482227}
+  // GeolocationPositionError {code: 1, message: 'User denied Geolocation'}
+  // GeolocationPositionError {code: 1, message: 'User has not allowed access to system location.'}
+// 449. The Angular Way
+// 
