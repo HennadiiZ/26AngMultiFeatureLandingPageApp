@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +12,7 @@ import { WeatherModule } from './weather/weather.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     WeatherModule
   ],
@@ -45,3 +47,8 @@ export class AppModule { }
 // 451. Connecting the Service to a Component
 
 // 452. Transforming Coordinates to Query Params
+
+// 453. SwitchMap vs MergeMap
+// 454. But Why SwitchMap?
+// 455. Making a Request
+
