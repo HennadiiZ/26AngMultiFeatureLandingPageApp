@@ -57,3 +57,7 @@ export class AppModule { }
 
 // 458. Filter, MergeMap, Pluck Operators
 // 459. Map and toArray Operators
+
+// 460. Accessing Data in the Template
+ // 2 h
+//

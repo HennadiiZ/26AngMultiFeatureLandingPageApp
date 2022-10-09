@@ -1,1 +1,7 @@
-<p>forecast works!</p>
+<!-- <div *ngFor="let forecast of forecastData">
+  {{ forecast.temp }}
+</div> -->
+
+<div *ngFor="let forecast of forecastData">
+  {{ getDayAndTemp(forecast.temp, forecast.dateString) }}
+</div>
