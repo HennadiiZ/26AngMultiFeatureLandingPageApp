@@ -54,3 +54,5 @@ export class AppModule { }
 
 // 456. Further Processing
 // 457. Generics on HTTP Requests
+
+// 458. Filter, MergeMap, Pluck Operators
