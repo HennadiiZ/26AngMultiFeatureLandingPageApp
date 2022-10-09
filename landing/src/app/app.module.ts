@@ -43,3 +43,5 @@ export class AppModule { }
 
 // 450. Geolocation in an Observable
 // 451. Connecting the Service to a Component
+
+// 452. Transforming Coordinates to Query Params
