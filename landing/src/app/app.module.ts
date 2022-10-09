@@ -56,3 +56,4 @@ export class AppModule { }
 // 457. Generics on HTTP Requests
 
 // 458. Filter, MergeMap, Pluck Operators
+// 459. Map and toArray Operators
