@@ -1,15 +1,62 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { scan, Subject } from 'rxjs';
 import { Command } from '../interfaces/command.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsService {
-  messages!: Subject<Command> ;
+  // messages!: Subject<Command> ;
+  messages!: any;
 
   constructor() {
-    this.messages = new Subject<Command>();
+    // this.messages = new Subject<Command>()
+
+    // this.messages = new Subject<any>()
+    //   .pipe(
+    //     scan((acc: any, value: any) => {
+    //       if (value.type === 'clear') {
+    //         return acc.filter((message: { id: any; }) => message.id !== value.id)
+    //       } else {
+    //         return [...acc, value];
+    //       }
+    //     }, [])
+    //   );
+
+    // this.messages = new Subject<Command>()
+    // .pipe(
+    //   scan((acc: Command[], value: Command) => {
+    //     if (value.type === 'clear') {
+    //       return acc.filter((message: Command) => message.id !== value.id)
+    //     } else {
+    //       return [...acc, value];
+    //     }
+    //   }, [])
+    // );
+
+    this.messages = new Subject<Command>()
+    // .pipe(
+    //   scan((acc: Command[], value: Command) => {
+    //     if (value.type === 'clear') {
+    //       return acc.filter((message: Command) => message.id !== value.id)
+    //     } else {
+    //       return [...acc, value];
+    //     }
+    //   }, [])
+    // );
+  }
+
+  getMessages() {
+    return this.messages
+    .pipe(
+      scan((acc: Command[], value: Command) => {
+        if (value.type === 'clear') {
+          return acc.filter((message: Command) => message.id !== value.id)
+        } else {
+          return [...acc, value];
+        }
+      }, [])
+    );
   }
 
   addSuccess(message: string): void {

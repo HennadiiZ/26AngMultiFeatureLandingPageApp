@@ -82,3 +82,7 @@ export class AppModule { }
 
 // 473. Building a Command Structure
 // 3 h 27
+
+// 474. The Scan Operator
+// 475. Scan in the Service
+// 476. Fixing a Few Errors
