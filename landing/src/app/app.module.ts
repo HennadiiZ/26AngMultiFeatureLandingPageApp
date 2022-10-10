@@ -60,4 +60,7 @@ export class AppModule { }
 
 // 460. Accessing Data in the Template
  // 2 h
-//
+
+// 461. Pipes Overview
+// 462. Data Pipes
+// 463. The Async Pipe

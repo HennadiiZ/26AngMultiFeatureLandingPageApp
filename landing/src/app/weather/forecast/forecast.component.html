@@ -2,6 +2,16 @@
   {{ forecast.temp }}
 </div> -->
 
-<div *ngFor="let forecast of forecastData">
+<!-- <div *ngFor="let forecast of forecastData">
   {{ getDayAndTemp(forecast.temp, forecast.dateString) }}
+</div> -->
+
+<!-- <div *ngFor="let forecast of forecastData">
+  {{ forecast.temp | number: '1.0-0' }}°C
+  {{ forecast.dateString | date: 'E' }}
+</div> -->
+
+<div *ngFor="let forecast of forecast$ | async">
+  {{ forecast.temp | number: '1.0-0' }}°C
+  {{ forecast.dateString | date: 'E' }}
 </div>
