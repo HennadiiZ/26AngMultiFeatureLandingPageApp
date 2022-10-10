@@ -6,49 +6,10 @@ import { Command } from '../interfaces/command.interface';
   providedIn: 'root'
 })
 export class NotificationsService {
-  // messages!: Subject<Command> ;
-  // messages!: any;
-
   messagesInput!: Subject<Command>;
   messagesOutput!: Observable<Command[]> ;
 
-
   constructor() {
-    // this.messages = new Subject<Command>()
-
-    // this.messages = new Subject<any>()
-    //   .pipe(
-    //     scan((acc: any, value: any) => {
-    //       if (value.type === 'clear') {
-    //         return acc.filter((message: { id: any; }) => message.id !== value.id)
-    //       } else {
-    //         return [...acc, value];
-    //       }
-    //     }, [])
-    //   );
-
-    // this.messages = new Subject<Command>()
-    // .pipe(
-    //   scan((acc: Command[], value: Command) => {
-    //     if (value.type === 'clear') {
-    //       return acc.filter((message: Command) => message.id !== value.id)
-    //     } else {
-    //       return [...acc, value];
-    //     }
-    //   }, [])
-    // );
-
-    // this.messagesInput = new Subject<Command>()
-    // .pipe(
-    //   scan((acc: Command[], value: Command) => {
-    //     if (value.type === 'clear') {
-    //       return acc.filter((message: Command) => message.id !== value.id)
-    //     } else {
-    //       return [...acc, value];
-    //     }
-    //   }, [])
-    // );
-
     this.messagesInput = new Subject<Command>();
 
     this.messagesOutput = this.messagesInput
@@ -77,7 +38,6 @@ export class NotificationsService {
   }
 
   addSuccess(message: string): void {
-    // this.messages.next(message);
     this.messagesInput.next({
       id: this.randomId(),
       text: message,
@@ -86,7 +46,6 @@ export class NotificationsService {
   }
 
   addError(message: string): void {
-    // this.messages.next(message);
     this.messagesInput.next({
       id: this.randomId(),
       text: message,
