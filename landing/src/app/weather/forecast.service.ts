@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, map, mergeMap, Observable, of, pluck, switchMap, toArray } from 'rxjs';
+import { filter, map, mergeMap, Observable, of, pluck, switchMap, toArray, share } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { OpenWeatherResponse } from '../interfaces/open-weather-responce.interface';
 @Injectable({
@@ -43,12 +43,13 @@ export class ForecastService {
             temp: value.main.temp
           }
         }),
-        toArray()
+        toArray(),
         // map(response => {
         //   return response.list.map((record, index) => {
         //     return { dt_txr, temp }
         //   }).filter((record, index) => index % 8 === 0)
         // })
+        share()
       );
   }
 
