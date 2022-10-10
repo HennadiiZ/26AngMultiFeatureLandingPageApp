@@ -74,3 +74,8 @@ export class AppModule { }
 
 // 467. How to Structure Services
 // 468. Generating the Notification Module
+
+// 469. Notifications Service Design
+// 470. Introducing Subjects
+// 471. Subject Variations
+// 472. More Design on Notifications
