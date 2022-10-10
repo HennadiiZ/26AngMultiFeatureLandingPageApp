@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NotificationModule } from './notification/notification.module';
 import { WeatherModule } from './weather/weather.module';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { WeatherModule } from './weather/weather.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    WeatherModule
+    WeatherModule,
+    NotificationModule
   ],
   exports: [
   ],
@@ -69,3 +71,6 @@ export class AppModule { }
 // 465. Styling the Forecast Component
 
 // 466. Reminder on the Share Operator
+
+// 467. How to Structure Services
+// 468. Generating the Notification Module
