@@ -79,3 +79,6 @@ export class AppModule { }
 // 470. Introducing Subjects
 // 471. Subject Variations
 // 472. More Design on Notifications
+
+// 473. Building a Command Structure
+// 3 h 27
