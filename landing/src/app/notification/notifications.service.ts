@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { scan, Subject } from 'rxjs';
+import { Observable, scan, Subject } from 'rxjs';
 import { Command } from '../interfaces/command.interface';
 
 @Injectable({
@@ -7,7 +7,11 @@ import { Command } from '../interfaces/command.interface';
 })
 export class NotificationsService {
   // messages!: Subject<Command> ;
-  messages!: any;
+  // messages!: any;
+
+  messagesInput!: Subject<Command>;
+  messagesOutput!: Observable<Command[]> ;
+
 
   constructor() {
     // this.messages = new Subject<Command>()
@@ -34,7 +38,7 @@ export class NotificationsService {
     //   }, [])
     // );
 
-    this.messages = new Subject<Command>()
+    // this.messagesInput = new Subject<Command>()
     // .pipe(
     //   scan((acc: Command[], value: Command) => {
     //     if (value.type === 'clear') {
@@ -44,10 +48,23 @@ export class NotificationsService {
     //     }
     //   }, [])
     // );
+
+    this.messagesInput = new Subject<Command>();
+
+    this.messagesOutput = this.messagesInput
+    .pipe(
+      scan((acc: Command[], value: Command) => {
+        if (value.type === 'clear') {
+          return acc.filter((message: Command) => message.id !== value.id)
+        } else {
+          return [...acc, value];
+        }
+      }, [])
+    );
   }
 
   getMessages() {
-    return this.messages
+    return this.messagesInput
     .pipe(
       scan((acc: Command[], value: Command) => {
         if (value.type === 'clear') {
@@ -61,7 +78,7 @@ export class NotificationsService {
 
   addSuccess(message: string): void {
     // this.messages.next(message);
-    this.messages.next({
+    this.messagesInput.next({
       id: this.randomId(),
       text: message,
       type: 'success'
@@ -70,7 +87,7 @@ export class NotificationsService {
 
   addError(message: string): void {
     // this.messages.next(message);
-    this.messages.next({
+    this.messagesInput.next({
       id: this.randomId(),
       text: message,
       type: 'error'
@@ -78,7 +95,7 @@ export class NotificationsService {
   }
 
   clearMessage(id: number): void {
-    this.messages.next({
+    this.messagesInput.next({
       id: id,
       type: 'clear'
     });
