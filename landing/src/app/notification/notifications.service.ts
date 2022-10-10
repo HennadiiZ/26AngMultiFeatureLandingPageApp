@@ -38,19 +38,31 @@ export class NotificationsService {
   }
 
   addSuccess(message: string): void {
+    const id = this.randomId();
+
     this.messagesInput.next({
-      id: this.randomId(),
+      id,
       text: message,
       type: 'success'
     });
+
+    setTimeout(() => {
+      this.clearMessage(id);
+    }, 5000);
   }
 
   addError(message: string): void {
+    const id = this.randomId();
+
     this.messagesInput.next({
-      id: this.randomId(),
+      id,
       text: message,
       type: 'error'
     });
+
+    setTimeout(() => {
+      this.clearMessage(id);
+    }, 5000);
   }
 
   clearMessage(id: number): void {

@@ -93,3 +93,7 @@ export class AppModule { }
 
 // 479. Displaying Messages
 // 4 h
+
+// 480. Automatic Timeout
+
+
