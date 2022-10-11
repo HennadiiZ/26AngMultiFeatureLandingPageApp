@@ -1,6 +1,7 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, Subject } from 'rxjs';
+import { map, Observable, Subject, switchMap } from 'rxjs';
+import { NewsApiResponse } from '../interfaces/new-api-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class NewsApiService {
   pagesOutput!: Observable<any>;
   numberOfPages!: Observable<number>;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.pagesInput = new Subject();
     this.pagesOutput = this.pagesInput.pipe(
       map((page: number) => {
@@ -24,6 +25,9 @@ export class NewsApiService {
           .set('country', this.country)
           .set('pageSize', '' + this.pageSize)
           .set('page', '' + page);
+      }),
+      switchMap((params: any) => {
+        return this.http.get<NewsApiResponse>(this.url, { params });
       })
     );
   }
