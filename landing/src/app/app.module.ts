@@ -139,3 +139,5 @@ export class AppModule { }
 
 // 506. Paginator Internals
 // 507. Styling the Current Page
+
+// 508. Parent to Child Communication
