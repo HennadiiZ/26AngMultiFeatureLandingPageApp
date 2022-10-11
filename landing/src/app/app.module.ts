@@ -129,3 +129,6 @@ export class AppModule { }
 // 498. Rendering Articles
 // 499. Fetching a Page
 // 500. Fixing Some Styling
+
+// 501. Creating Custom Pipes
+// 502. Custom Pipe Arguments
