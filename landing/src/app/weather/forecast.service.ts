@@ -20,24 +20,14 @@ export class ForecastService {
       .pipe(
         map(coords => {
           return new HttpParams()
-            // .set('lat', '' + coords.latitude)
             .set('lat', String(coords.latitude))
             .set('lon', String(coords.longitude))
             .set('units', 'metric')
             .set('appid', 'e07899b8ac29022c34d61a58f51cd3db')
         }),
         switchMap((params)=> {
-          // return this.http.get(this.url, { params: params })
           return this.http.get<OpenWeatherResponse>(this.url, { params })
         }),
-        // map((response: OpenWeatherResponse)=> {
-        //   response.list
-        // })
-        // map((response)=> {
-        //   response.list
-        // })
-
-
         pluck('list'),
         mergeMap(value => of(...value)),
         filter((value, index)=> index % 8 === 0 ),
@@ -48,30 +38,14 @@ export class ForecastService {
           }
         }),
         toArray(),
-        // map(response => {
-        //   return response.list.map((record, index) => {
-        //     return { dt_txr, temp }
-        //   }).filter((record, index) => index % 8 === 0)
-        // })
         share()
       );
   }
 
   getCurrentLocation() {
-    // window.navigator.geolocation.getCurrentPosition(
-    //   (position) => {
-    //     console.log(position);
-    //     this.position = position;
-    //     getForecastData();
-    //   },
-    //   (err) => console.log(err)
-    // )
-
-    // return new Observable<Coordinates>((observer) => {
     return new Observable<any>((observer) => {
       window.navigator.geolocation.getCurrentPosition(
         (position) => {
-          // this.notificationsService.addSuccess('Got your location');
           observer.next(position.coords);
           observer.complete();
         },
