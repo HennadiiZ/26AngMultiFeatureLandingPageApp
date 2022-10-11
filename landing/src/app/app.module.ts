@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NewsApiModule } from './news-api/news-api.module';
 import { NotificationModule } from './notification/notification.module';
 import { WeatherModule } from './weather/weather.module';
 
@@ -16,7 +17,8 @@ import { WeatherModule } from './weather/weather.module';
     HttpClientModule,
     AppRoutingModule,
     WeatherModule,
-    NotificationModule
+    NotificationModule,
+    NewsApiModule
   ],
   exports: [
   ],
@@ -118,3 +120,12 @@ export class AppModule { }
 // 492. Applying a Type to the Response
 
 // 493. Calculating Pages Available
+
+// 494. Wrapping the Input Subject
+// 495. A Better Interface
+// 496. The Article List Component
+  // ----- 5 h 18m
+// 497. Accessing the Data
+// 498. Rendering Articles
+// 499. Fetching a Page
+// 500. Fixing Some Styling
