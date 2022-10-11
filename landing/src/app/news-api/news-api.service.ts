@@ -1,5 +1,6 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,14 @@ export class NewsApiService {
 
   constructor() {
     this.pagesInput = new Subject();
-    this.pagesOutput = this.pagesInput.pipe();
+    this.pagesOutput = this.pagesInput.pipe(
+      map((page: number) => {
+        return new HttpParams()
+          .set('apiKey', this.apiKey)
+          .set('country', this.country)
+          .set('pageSize', '' + this.pageSize)
+          .set('page', '' + page);
+      })
+    );
   }
 }
