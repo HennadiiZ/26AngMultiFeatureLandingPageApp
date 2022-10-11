@@ -109,3 +109,6 @@ export class AppModule { }
 // 487. Service Design
 // 488. More on API Pagination
 // 489. Service Generation
+
+// 490. Subject Declarations
+  // ----- 5 h
