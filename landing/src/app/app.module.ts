@@ -132,3 +132,7 @@ export class AppModule { }
 
 // 501. Creating Custom Pipes
 // 502. Custom Pipe Arguments
+
+// 503. The Shared Module Pattern
+// 504. Connecting the Paginator
+// 505. Paginator Strategy
