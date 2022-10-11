@@ -136,3 +136,6 @@ export class AppModule { }
 // 503. The Shared Module Pattern
 // 504. Connecting the Paginator
 // 505. Paginator Strategy
+
+// 506. Paginator Internals
+// 507. Styling the Current Page
