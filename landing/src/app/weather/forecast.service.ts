@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, map, mergeMap, Observable, of, pluck, switchMap, toArray, share, tap, catchError, catchError, throwError } from 'rxjs';
+import { filter, map, mergeMap, Observable, of, pluck, switchMap, toArray, share, tap, catchError, throwError, retry } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { OpenWeatherResponse } from '../interfaces/open-weather-responce.interface';
 import { NotificationsService } from '../notification/notifications.service';
@@ -52,6 +52,7 @@ export class ForecastService {
         (err) => observer.error(err)
       )
     }).pipe(
+      // retry(1),
       tap(() => {
         this.notificationsService.addSuccess('Got your location');
       }),
@@ -59,9 +60,9 @@ export class ForecastService {
         this.notificationsService.addError('Failed to get your location');
         // the same:
 
-        // return new Observable(observer => {
-        //   observer.error(err);
-        // })
+        return new Observable(observer => {
+          observer.error(err);
+        })
 
         // shortcut:
         // return throwError(err);
